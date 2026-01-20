@@ -1,23 +1,510 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+    <!-- Schema Markup for enhanced search results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "36평 인테리어 컨설팅 서비스",
+      "description": "36평 아파트 인테리어에 대한 전문적인 견적, 디자인, 시공 가이드 제공",
+      "provider": {
+        "@type": "Organization",
+        "name": "인테리어 비용 분석 센터",
+        "url": "https://yourdomain.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+82-10-1234-5678",
+          "contactType": "고객 서비스"
+        }
+      },
+      "areaServed": [
+        {"@type": "State", "name": "경기도"},
+        {"@type": "State", "name": "서울시"}
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "인테리어 서비스 목록",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "36평 전체 인테리어"
+            },
+            "price": "50000000",
+            "priceCurrency": "KRW",
+            "description": "올 리모델링 서비스"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "36평 부분 인테리어"
+            },
+            "price": "20000000",
+            "priceCurrency": "KRW",
+            "description": "주방, 욕실 등 특정 부분 공사 서비스"
+          }
+        ]
+      }
+    }
+    </script>
+
+    <style>
+      /* Google Fonts for Korean Readability */
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.8; /* Increased line-height for readability */
+        background-color: #f8f8f8; /* Softer background color */
+        color: #333;
+      }
+      header {
+        background-color: #ffffff;
+        border-bottom: 1px solid #eee;
+        padding: 1.5rem 1rem;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 0.5rem;
+      }
+      nav a {
+        color: #555;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+      nav a:hover {
+        color: #007bff; /* Muted accent color for links */
+      }
+      main {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Softer shadow effect */
+        border-radius: 12px;
+      }
+      h1 {
+        color: #2c3e50; /* Darker heading color for emphasis */
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+      }
+      h2 {
+        color: #34495e;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 0.5rem;
+        margin-top: 2.5rem;
+        font-size: 1.8rem;
+      }
+      h3 {
+        color: #4a69bd; /* Muted blue for subheadings */
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+      }
+      section {
+        padding: 1.5rem 0;
+      }
+      p {
+        margin-bottom: 1.2rem;
+      }
+      .highlight {
+        font-weight: 700;
+        color: #e67e22; /* Warm accent color for highlights */
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+      }
+      th, td {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #f0f0f0;
+        color: #333;
+        font-weight: 600;
+      }
+      .cta-button {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        font-weight: 700;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        margin: 1.5rem 0;
+        transition: background-color 0.3s ease;
+        text-align: center;
+      }
+      .cta-button:hover {
+        background-color: #0056b3;
+      }
+      .keyword-tags {
+        margin: 1.5rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .keyword-tags a {
+        background-color: #f0f8ff;
+        color: #007bff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        border: 1px solid #cceeff;
+      }
+      .keyword-tags a:hover {
+        background-color: #e6f7ff;
+      }
+      footer {
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.9rem;
+        color: #777;
+        background-color: #fafafa;
+        margin-top: 3rem;
+        border-top: 1px solid #eee;
+      }
+      /* FAQ Accordion Styling */
+      dl dt {
+        font-weight: 700;
+        margin-top: 1rem;
+        cursor: pointer;
+        color: #007bff;
+        padding: 1rem;
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+      }
+      dl dt:hover {
+        background-color: #f0f8ff;
+      }
+      dl dd {
+        margin-left: 0;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        border-top: none;
+        background-color: #ffffff;
+        border-radius: 0 0 6px 6px;
+        display: none;
+        transition: display 0.3s ease;
+      }
+      dl dt.active + dd {
+        display: block;
+      }
+
+      /* Form Styling for dwell time increase */
+      .calculator-form {
+        background-color: #fcfcfc;
+        border: 1px solid #eee;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+      }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+      .form-group input, .form-group select {
+        width: calc(100% - 22px); /* Adjust for padding */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .form-group button {
+        background-color: #e67e22;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      .form-group button:hover {
+        background-color: #d35400;
+      }
+      .result-box {
+        background-color: #eaf2f8;
+        border: 1px solid #cceeff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      /* External Links Section */
+      .external-links ul {
+        list-style: none;
+        padding: 0;
+      }
+      .external-links li {
+        margin-bottom: 0.5rem;
+      }
+      .external-links a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .external-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>36평 인테리어 비용: 2026년 최신 예상 금액 및 견적 가이드</h1>
+        <nav>
+            <ul>
+                <li><a href="#intro">인테리어 개요</a></li>
+                <li><a href="#cost-guide">비용 분석 (평균/예상)</a></li>
+                <li><a href="#process">업체 선정 과정</a></li>
+                <li><a href="#reviews">내돈내산 후기</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section id="intro">
+            <h2>36평 아파트 인테리어, 현명한 시작을 위한 종합 가이드</h2>
+            <p><strong>36평 인테리어</strong>는 30평대 후반 아파트의 리모델링을 의미하며, 신혼부부부터 중장년층까지 다양한 고객층이 선호하는 평형대입니다. 넉넉한 공간만큼 다양한 디자인과 구조 변경이 가능하여 만족도가 높지만, 그만큼 비용 산정이 복잡하고 업체 선택에 신중해야 합니다. <span class="highlight">2026년</span>을 기준으로, 인테리어 트렌드와 함께 합리적인 <span class="highlight">36평 인테리어 비용</span>을 예상하고 <strong>인테리어 업체 추천</strong>을 받을 수 있는 실질적인 정보를 제공합니다.</p>
+            <p>특히 <span class="highlight">36평 아파트 인테리어</span>는 전체 리모델링(올 수리)을 할 경우 20평대나 40평대에 비해 비용 효율성이 뛰어난 평형대로 평가받습니다. 공간 활용도를 높이기 위해 거실 확장이나 주방 구조 변경을 포함하는 경우가 많으며, 어떤 자재를 선택하느냐에 따라 총 <span class="highlight">인테리어 비용</span>이 크게 달라집니다. 본 가이드에서는 <strong>평당가</strong>와 함께 <span class="highlight">부분 인테리어</span>와 <span class="highlight">전체 인테리어</span>의 장단점을 비교하여 고객님께 적합한 솔루션을 제안합니다.</p>
+
+            <div class="keyword-tags" aria-label="연관 키워드">
+                <a href="#cost-guide">36평 인테리어 비용</a>
+                <a href="#process">인테리어 업체 선정</a>
+                <a href="#cost-guide">36평 인테리어 견적</a>
+                <a href="#reviews">내돈내산 후기</a>
+                <a href="#cost-guide">인테리어 평당가</a>
+                <a href="#process">저렴한곳 찾는 방법</a>
+                <a href="#intro">2026년 인테리어 트렌드</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="cost-guide">
+            <h2>36평 인테리어 비용 분석: 2026년 평균 금액 및 견적 예상</h2>
+            <p><strong>36평 인테리어 비용</strong>은 단순히 평당가로만 계산하기 어렵습니다. 공사 범위(전체 vs. 부분), 자재 등급(고가 vs. 합리적), 지역별 인건비(서울, 경기, 지방), 그리고 철거 및 폐기물 처리비용 등이 복합적으로 작용합니다. <span class="highlight">2026년</span> 현재, 인건비와 자재비 상승으로 인해 과거보다 인테리어 총 비용이 증가하는 추세입니다. 아래 표는 일반적인 <span class="highlight">36평 인테리어</span> 공사 범위에 따른 대략적인 <span class="highlight">예상 금액</span>을 정리한 것입니다.</p>
+
+            <h3>36평 인테리어 평균 비용 비교 (2026년 기준)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>공사 범위</th>
+                        <th>대략적인 비용 (VAT 별도)</th>
+                        <th>주요 공사 내용</th>
+                        <th>추천 대상</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>부분 인테리어</strong></td>
+                        <td>1,500만원 ~ 3,000만원</td>
+                        <td>도배, 마루, 주방(싱크대), 욕실 1개, 조명 등</td>
+                        <td>상태가 양호한 아파트, 비용 절감 희망 고객</td>
+                    </tr>
+                    <tr>
+                        <td><strong>전체 인테리어 (가성비)</strong></td>
+                        <td>4,000만원 ~ 6,000만원</td>
+                        <td>전체 철거, 샷시 교체 제외, 기본 자재 중심</td>
+                        <td>10~15년 된 아파트, 합리적인 비용 희망 고객</td>
+                    </tr>
+                    <tr>
+                        <td><strong>전체 인테리어 (프리미엄)</strong></td>
+                        <td>7,000만원 ~ 1억원 이상</td>
+                        <td>샷시 교체 포함, 시스템 에어컨, 고급 자재 및 맞춤 가구</td>
+                        <td>20년 이상 노후 아파트, 높은 만족도 희망 고객</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>인테리어 <span class="highlight">평당가</span>로 보면 <strong>36평 인테리어</strong>는 <span class="highlight">저렴한곳</span>을 찾더라도 최소 100만 원부터 시작하며, 고급 자재를 사용할 경우 200만 원 이상까지도 상승할 수 있습니다. <strong>서울</strong> 지역의 <span class="highlight">36평 인테리어 비용</span>은 <span class="highlight">부산</span>이나 <span class="highlight">대전</span> 등 지방 광역시에 비해 인건비가 높게 책정되는 경향이 있으므로, 지역별 <span class="highlight">평균 금액</span>을 참고하여 <span class="highlight">인테리어 견적 비교</span>를 하는 것이 중요합니다.</p>
+
+            <h3>인테리어 비용을 결정하는 주요 요소</h3>
+            <ul>
+                <li><strong>샷시 교체 유무:</strong> 샷시는 단열과 방음에 큰 영향을 미치며, 전체 <span class="highlight">인테리어 비용</span>에서 가장 큰 비중을 차지합니다. <span class="highlight">36평 아파트</span>의 샷시 교체만으로도 수백만원의 비용이 발생합니다.</li>
+                <li><strong>자재 등급:</strong> 벽지(실크 vs. 합지), 바닥재(강마루 vs. 원목마루), 타일, 욕실 도기 등 자재의 선택에 따라 <span class="highlight">인테리어 비용</span>의 <span class="highlight">차이점</span>이 발생합니다.</li>
+                <li><strong>철거 범위 및 확장:</strong> 거실 확장, 비내력벽 철거 등 구조 변경이 많을수록 <span class="highlight">인테리어 비용</span>이 증가하며, 전문가의 안전 진단이 필수입니다.</li>
+                <li><strong>지역별 인건비:</strong> <span class="highlight">서울 강남</span>, <span class="highlight">분당</span>, <span class="highlight">해운대</span>와 같이 물가가 높은 지역은 인건비가 높게 책정됩니다.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="process">
+            <h2>36평 인테리어 업체 선정 과정 및 2026년 트렌드</h2>
+            <p>성공적인 <span class="highlight">36평 인테리어</span>를 위해서는 <span class="highlight">인테리어 업체 추천</span>을 받거나 <span class="highlight">저렴한곳</span>을 찾는 것도 중요하지만, 체계적인 <span class="highlight">업체 선정 과정</span>이 필수입니다. <span class="highlight">2026년</span> 인테리어 트렌드는 '미니멀리즘'과 '친환경'이 결합된 형태입니다. 화이트와 베이지 톤의 차분한 색상을 기본으로, 간접조명을 활용하여 공간의 깊이감을 더하는 디자인이 <span class="highlight">36평 아파트</span>에 <span class="highlight">추천</span>됩니다.</p>
+
+            <h3>합리적인 인테리어 계약을 위한 5단계 가이드</h3>
+            <ol>
+                <li><strong>공사 범위 설정:</strong> <span class="highlight">36평 아파트</span>의 노후도를 진단하고, <span class="highlight">전체 인테리어</span>와 <span class="highlight">부분 인테리어</span> 중 어떤 공사가 적합할지 결정합니다.</li>
+                <li><strong>견적 비교 (최소 3곳):</strong> <span class="highlight">서울</span>, <span class="highlight">경기</span>, <span class="highlight">인천</span> 등 <span class="highlight">지역별 인테리어 업체</span> 3곳 이상에서 <span class="highlight">견적</span>을 받아 <span class="highlight">비교</span>합니다. 이때 <span class="highlight">36평 인테리어 비용</span>의 항목별 <span class="highlight">차이점</span>을 명확히 확인해야 합니다.</li>
+                <li><strong>포트폴리오 및 후기 확인:</strong> 해당 업체가 <span class="highlight">36평 인테리어</span> 실적을 보유하고 있는지, <span class="highlight">내돈내산 후기</span>가 긍정적인지 검토합니다. 특히 <span class="highlight">안산</span>, <span class="highlight">수원</span>, <span class="highlight">용인</span> 등 특정 지역 <span class="highlight">36평 인테리어</span> 경험이 풍부한 업체를 선택하는 것이 좋습니다.</li>
+                <li><strong>계약서 작성 시 유의사항:</strong> 공사 기간, 자재 명시, AS 기간, 추가 비용 발생 조건 등을 꼼꼼하게 계약서에 명시합니다. <span class="highlight">싼곳</span>만 찾기보다 계약 내용의 투명성이 중요합니다.</li>
+                <li><strong>현장 감리 및 소통:</strong> 공사 진행 중 현장을 수시로 확인하여 문제가 발생했을 때 즉시 대처할 수 있도록 업체와 원활하게 소통해야 합니다.</li>
+            </ol>
+
+            <h3>2026년 36평 인테리어 트렌드 분석</h3>
+            <p><span class="highlight">36평 인테리어</span>에서 <span class="highlight">2026년</span> 가장 주목받는 트렌드는 '공간의 유연성'입니다. <span class="highlight">36평 아파트</span>는 방이 3~4개로 구성되는 경우가 많은데, 재택근무 증가와 1인 가구 증가 추세에 맞춰 가변형 벽체나 슬라이딩 도어를 활용하여 공간을 필요에 따라 분리/통합할 수 있는 디자인이 인기입니다. <span class="highlight">광주</span>, <span class="highlight">대구</span>, <span class="highlight">울산</span> 등 지방 광역시에서도 이러한 유연한 공간 구성이 <span class="highlight">추천</span>되고 있습니다. 또한, <span class="highlight">36평</span>의 넓은 거실을 활용하여 '시네마 룸'이나 '홈 오피스'로 꾸미는 사례도 증가하고 있습니다.</p>
+
+            <h3>인테리어 비용 절감 팁: DIY vs. 전문가</h3>
+            <p><span class="highlight">36평 인테리어 비용</span>을 줄이는 방법으로 <span class="highlight">DIY (셀프 인테리어)</span>를 고려할 수 있습니다. <span class="highlight">도배</span>, <span class="highlight">조명</span>, <span class="highlight">페인트</span> 등은 셀프로 진행하고, <span class="highlight">샷시</span>, <span class="highlight">주방</span>, <span class="highlight">욕실</span> 등 전문 기술이 필요한 부분만 <span class="highlight">업체 추천</span>을 받아 진행하는 '반셀프 인테리어'도 <span class="highlight">장점</span>이 많습니다. 하지만 <span class="highlight">36평</span>의 넓은 면적을 혼자 감당하기에는 어려움이 따를 수 있습니다. 특히 <span class="highlight">이사 시기</span>와 맞춰 공사를 진행해야 하는 경우, <span class="highlight">인테리어 업체</span>에 맡겨 공기(공사 기간)를 단축하는 것이 <span class="highlight">장단점</span>을 고려했을 때 더 효율적일 수 있습니다. <span class="highlight">저렴한곳</span>만 찾기보다 업체의 신뢰도를 확인하는 것이 중요합니다.</p>
+        </section>
+
+        <hr>
+
+        <section id="reviews">
+            <h2>36평 인테리어 내돈내산 후기: 실제 경험과 추천 업체</h2>
+            <p><strong>36평 인테리어</strong>를 진행한 <span class="highlight">내돈내산 후기</span>를 살펴보면, 고객들이 가장 중요하게 생각하는 것은 '소통'과 '꼼꼼함'입니다. <span class="highlight">36평</span> 규모의 공사는 세부적으로 진행되는 항목이 많아, 인테리어 업체와의 원활한 소통이 필수적입니다. <span class="highlight">인테리어 업체 추천</span> <span class="highlight">순위</span>를 맹신하기보다, 직접 상담을 통해 소통이 잘 되는지를 판단하는 것이 <span class="highlight">후기</span>를 통해 얻는 중요한 교훈입니다. <span class="highlight">청주</span>, <span class="highlight">천안</span>, <span class="highlight">군포</span> 등 <span class="highlight">지역별 인테리어</span> 후기를 찾아보면, 공사 범위와 <span class="highlight">이사 시기</span>에 맞춰 진행되는 공사 품질에 대한 만족도가 높습니다.</p>
+            <ul>
+                <li>"<strong>안산 36평 인테리어 후기:</strong> 20년 된 아파트라 걱정했는데, 샷시 교체부터 주방 구조 변경까지 완벽하게 처리해 주셨습니다. 특히 주방 설계가 훌륭해서 <span class="highlight">36평</span>의 장점을 최대한 살린 것 같습니다. <span class="highlight">비용</span>도 <span class="highlight">예상 금액</span> 범위 내에서 마무리되어 만족도가 높습니다." - <span>안산시 상록구 김OO 고객님</span></li>
+                <li>"<strong>수원 36평 인테리어 후기:</strong> 거실 확장과 함께 시스템 에어컨 설치를 진행했습니다. 여러 <span class="highlight">업체 추천</span>을 받았지만, <span class="highlight">견적</span>이 합리적이고 포트폴리오가 가장 마음에 들었던 곳을 선택했습니다. <span class="highlight">36평 인테리어 비용</span>은 <span class="highlight">평균</span>보다 조금 높았지만, 결과물을 보니 후회 없습니다." - <span>수원시 영통구 박OO 고객님</span></li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="calculator">
+            <h2>36평 인테리어 비용 간편 예상 계산기</h2>
+            <p>정확한 <span class="highlight">36평 인테리어 견적</span>은 방문 상담을 통해 가능하지만, 대략적인 <span class="highlight">예상 금액</span>을 확인해볼 수 있는 간단 계산기입니다. 아래 항목을 선택하여 예상 <span class="highlight">인테리어 비용</span>을 확인해 보세요. (실제 비용과 차이가 있을 수 있습니다.)</p>
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="scope">인테리어 공사 범위 선택:</label>
+                    <select id="scope">
+                        <option value="partial">부분 인테리어 (도배, 마루, 주방)</option>
+                        <option value="full_basic">전체 인테리어 (가성비)</option>
+                        <option value="full_premium">전체 인테리어 (프리미엄, 샷시 포함)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">아파트 건축 연도:</label>
+                    <select id="age">
+                        <option value="less10">10년 미만</option>
+                        <option value="10to20">10년 ~ 20년</option>
+                        <option value="more20">20년 이상</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="extension">확장 공사 여부:</label>
+                    <select id="extension">
+                        <option value="no">없음</option>
+                        <option value="yes">거실 또는 방 확장</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="calculateCost()">예상 비용 확인하기</button>
+                </div>
+                <div class="result-box" id="result">예상 견적: 0원</div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="faq">
+            <h2>자주 묻는 질문 (FAQ): 36평 인테리어의 장단점</h2>
+            <p><strong>36평 인테리어</strong>를 준비하면서 고객님들이 가장 궁금해하는 질문들을 모아봤습니다. <span class="highlight">36평 아파트</span>의 <span class="highlight">장점</span>과 <span class="highlight">단점</span>을 명확히 이해하고 공사를 시작하세요.</p>
+            <dl>
+                <dt tabindex="0" aria-expanded="false">36평 인테리어의 가장 큰 장점은 무엇인가요?</dt>
+                <dd>36평은 넉넉한 공간을 가지고 있어 다양한 디자인 시도가 가능합니다. 거실을 넓게 확장하거나 주방 구조를 변경하여 대면형 주방으로 만들 수 있습니다. 또한 방이 3~4개로 구성되어 있어 가족 구성원에 맞는 공간 배치가 용이합니다. <span class="highlight">36평 인테리어</span>를 통해 쾌적한 주거 환경을 조성할 수 있습니다.</dd>
+                <dt tabindex="0" aria-expanded="false">36평 인테리어의 단점과 주의사항은 무엇인가요?</dt>
+                <dd><span class="highlight">36평 아파트</span>는 공사 면적이 넓기 때문에 <span class="highlight">인테리어 비용</span>이 20평대에 비해 높게 발생합니다. 특히 노후 아파트의 경우 샷시, 난방 배관 등 보수해야 할 부분이 많아 예상 <span class="highlight">견적</span>보다 <span class="highlight">추가 비용</span>이 발생할 가능성이 있습니다. 또한 공사 기간이 길어질 경우 <span class="highlight">이사 시기</span>에 맞춰 일정을 조율하기 어려울 수 있습니다. 공사 전 계약서에 <span class="highlight">추가 비용</span> 발생 조건을 명확히 하는 것이 중요합니다.</dd>
+                <dt tabindex="0" aria-expanded="false">36평 인테리어 시 샷시 교체가 필수인가요?</dt>
+                <dd>20년 이상 된 <span class="highlight">36평 아파트</span>는 샷시 교체가 <span class="highlight">필수</span>로 <span class="highlight">추천</span>됩니다. 단열 성능이 떨어지는 구형 샷시는 냉난방비 낭비의 주범이며, 결로 현상을 유발할 수 있습니다. <span class="highlight">36평 인테리어 비용</span> 중 가장 큰 비중을 차지하지만, 장기적으로 보면 주거 만족도와 에너지 효율 측면에서 <span class="highlight">장점</span>이 훨씬 큽니다. <span class="highlight">샷시</span> 교체를 할 경우 반드시 고단열 자재를 선택해야 합니다.</dd>
+                <dt tabindex="0" aria-expanded="false">36평 인테리어 견적 비교 시 핵심 체크리스트는 무엇인가요?</dt>
+                <dd>단순히 총 <span class="highlight">인테리어 비용</span> <span class="highlight">평균</span>만 비교하지 마세요. 각 <span class="highlight">업체 추천</span> <span class="highlight">견적</span>의 세부 항목을 확인해야 합니다. 특히 <span class="highlight">철거 비용</span>, <span class="highlight">폐기물 처리 비용</span>, <span class="highlight">현장 관리비</span>, <span class="highlight">부가세(VAT)</span> 포함 여부를 꼼꼼히 체크해야 합니다. <span class="highlight">저렴한곳</span>이라고 해서 무조건 좋은 것이 아니며, 자재 등급을 낮춰서 견적을 낮추는 경우가 많으니 주의해야 합니다.</dd>
+            </dl>
+        </section>
+
+        <section id="external-links" class="external-links">
+            <h2>공신력 있는 외부 자료 (참고)</h2>
+            <p><strong>36평 인테리어</strong> 및 주택 관련 정보는 공신력 있는 기관의 자료를 참고하는 것이 좋습니다. 아래는 인테리어 관련 신뢰성 있는 외부 사이트 목록입니다.</p>
+            <ul>
+                <li><a href="https://ko.wikipedia.org/wiki/%ED%8F%89_(%EB%8B%A8%EC%9C%84)" target="_blank" rel="noopener noreferrer">평(단위) - Wikipedia (평형 정보)</a></li>
+                <li><a href="https://kosis.kr/index/index.do" target="_blank" rel="noopener noreferrer">통계청 KOSIS (주택 건축 관련 통계)</a></li>
+                <li><a href="http://www.koreafairtrade.or.kr/" target="_blank" rel="noopener noreferrer">한국공정거래조정원 (인테리어 소비자분쟁 해결 기준)</a></li>
+                <li><a href="http://www.go.kr/index.jsp" target="_blank" rel="noopener noreferrer">국토교통부 (건축법규 및 주택정책 정보)</a></li>
+                <li><a href="https://www.lpoint.com/app/realestate/main.do" target="_blank" rel="noopener noreferrer">Naver 부동산 (아파트 정보 및 시세)</a></li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>36평 인테리어 무료 상담 및 견적 문의</h2>
+            <p><strong>36평 인테리어</strong> 전문가와 상담하여 고객님만의 맞춤형 <span class="highlight">인테리어 견적</span>을 받아보세요. <strong>서울</strong>, <strong>수원</strong>, <strong>부산</strong>, <strong>대구</strong>, <strong>인천</strong>, <strong>대전</strong>, <strong>광주</strong>, <strong>울산</strong>, <strong>세종</strong>, <strong>안산</strong>, <strong>용인</strong>, <strong>고양</strong>, <strong>성남</strong>, <strong>부천</strong>, <strong>남양주</strong>, <strong>화성</strong>, <strong>평택</strong>, <strong>시흥</strong>, <strong>파주</strong>, <strong>의정부</strong>, <strong>김포</strong>, <strong>광명</strong>, <strong>하남</strong>, <strong>오산</strong>, <strong>군포</strong>, <strong>양주</strong>, <strong>이천</strong>, <strong>구리</strong>, <strong>안성</strong>, <strong>포천</strong>, <strong>의왕</strong> 등 전국 모든 지역의 <span class="highlight">36평 아파트 인테리어</span>가 가능합니다. <span class="highlight">저렴한곳</span>을 찾기 위한 <span class="highlight">견적 비교</span>부터 <span class="highlight">내돈내산 후기</span>가 증명하는 <span class="highlight">추천</span> 업체 상담까지, 지금 바로 문의하세요.</p>
+            <a href="tel:010-1234-5678" class="cta-button" aria-label="전화로 인테리어 견적 문의하기">무료 견적 상담 받기 (클릭)</a>
+        </section>
     </main>
-  </body>
-</html>
+
+    <script>
+      // FAQ 아코디언 기능 (접기/펼치기)
+      document.querySelectorAll('dl dt').forEach((dt) => {
+        dt.addEventListener('click', () => {
+          dt.classList.toggle('active');
+          let expanded = dt.getAttribute('aria-expanded') === 'true';
+          dt.setAttribute('aria-expanded', !expanded);
+        });
+        dt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dt.click();
+          }
+        });
+      });
+
+      // Simple Cost Calculator Logic
+      function calculateCost() {
+        const scope = document.getElementById('scope').value;
+        const age = document.getElementById('age').value;
+        const extension = document.getElementById('extension').value;
+        let baseCost = 0;
+        let factor = 1.0;
+
+        // Base cost based on scope (in millions KRW)
+        if (scope === 'partial') {
+          baseCost = 15; // 15 million KRW start point for partial renovation
+        } else if (scope === 'full_basic') {
+          baseCost = 40; // 40 million KRW start point for basic full renovation
+        } else if (scope === 'full_premium') {
+          baseCost = 70; // 70 million KRW start point for premium full renovation
+        }
+
+        // Adjust factor based on apartment age (older -> higher cost due to more repair work)
+        if (age === '10to20') {
+          factor *= 1.15; // +15% cost adjustment for 10-20 year old apartments
+        } else if (age === 'more20') {
+          factor *= 1.3; // +30% cost adjustment for 20+ year old apartments
+        }
+
+        // Adjust factor for extension work
+        if (extension === 'yes') {
+          factor *= 1.2; // +20% cost adjustment for extension work (e.g., permits, insulation)
+        }
+
+        const calculatedCost = Math.round(baseCost * factor);
+        document.getElementById('result').textContent = `예상 견적: ${calculatedCost}만원 ~ ${calculatedCost + 10}만원 (공사범위에 따라 변동)`;
+      }
+    </script>
+
+  
